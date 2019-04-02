@@ -1,9 +1,11 @@
+# Find the sum of all the primes below two million.
+
 from math import sqrt
 
 def check_prime(number):
     if (number == 2 or number == 3):
         return 1
-        
+
     prime_flag = 1
     i = 3
     while (i <= sqrt(number)):

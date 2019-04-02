@@ -1,26 +1,55 @@
-# What is the largest prime factor of the number 600851475143 ?
+# What is the value of the first triangle number to have over five hundred divisors?
+from math import sqrt
 
-import time
-def timing():
-    start_time = time.time()
-    return lambda x: print("[{:.9f}s] {}".format(time.time() - start_time, x))
+largest_count = 1
 
-timer = timing()
+def check_prime(number):
+    if (number == 2 or number == 3):
+        return 1
 
-number = 600851475143
-i = 3
-global largest
-largest = 1
-while (i <= number):
-    u =  i % 10
-    if ((u == 1) or (u == 3) or (u == 7) or (u == 9)):      # All primes greater than 5 have only these numbers in decimal place
+    prime_flag = 1
+    i = 3
+    while (i <= sqrt(number)):
+
         if(number % i == 0):
-            number = number / i                             # Divide by the prime factor to reduce computation
-            if(i > largest):
-                largest = i
-    if ((u == 1) or (u == 7) or (u == 9)):                  # Increment by 2 for decimal value other than 3
-        i = i + 2
-    else:
-        i = i + 4
+            prime_flag = 0
+            break                             # Divide by the prime factor to reduce computation
 
-timer("Largest Prime Factor is {}".format(largest))
+        i = i + 2
+
+    if (prime_flag == 1):
+        return 1
+
+def find_divisor_num(num):
+    count = 1
+    if (num % 2 == 0):
+        a = 0
+        while (num % 2 == 0):
+            num = num / 2
+            a = a + 1
+        count = count * (a + 1)
+
+    while (num != 1):
+        for i in range (3, int(num) + 1, 2):
+            if (num == 1):
+                break
+            if (check_prime(i)):
+                b = 0
+                while (num % i == 0):
+                    num = num / i
+                    b = b + 1
+                count = count * (b + 1)
+            # print (i, num, count)
+
+    return count
+
+def triangle_num(i):
+    triangle_number = i * (i + 1) * 0.5
+    return triangle_number
+
+nth = 10
+while (largest_count <= 500):
+    tri_num = triangle_num(nth)
+    largest_count = find_divisor_num(tri_num)
+    nth = nth + 1
+    print (largest_count, tri_num)
