@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
 
 product = 1
@@ -23,11 +25,11 @@ grid = [[8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8]
 [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
 [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]]
 
-for k in range (0, 20):
-    for i in range (0, 17):
+for k in xrange (0, 20):
+    for i in xrange (0, 17):
         product_4_r = 1
         product_4_c = 1
-        for j in range (i, i + 4):
+        for j in xrange (i, i + 4):
             product_4_r = product_4_r * grid[k][j]
             product_4_c = product_4_c * grid[j][k]
 
@@ -36,19 +38,19 @@ for k in range (0, 20):
         if (product_4_c > product):
             product = product_4_c
 
-for k in range (0, 17):
-    for i in range (0, 17):
+for k in xrange (0, 17):
+    for i in xrange (0, 17):
         product_4_dr = 1
-        for j in range (0, 4):
+        for j in xrange (0, 4):
             product_4_dr = product_4_dr * grid[k+j][i+j]
 
         if (product_4_dr > product):
             product = product_4_dr
 
-for k in range (0, 17):
-    for i in range (3, 20):
+for k in xrange (0, 17):
+    for i in xrange (3, 20):
         product_4_dl = 1
-        for j in range (0, 4):
+        for j in xrange (0, 4):
             product_4_dl = product_4_dl * grid[k+j][i-j]
 
         if (product_4_dl > product):

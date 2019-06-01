@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Euler discovered the remarkable quadratic formula:
 #
 # n^2+n+41
@@ -17,28 +19,25 @@ from math import *
 
 def check_prime(number):
     if (number == 1):
-        return 0
+        return False
     if (number == 2 or number == 3):
-        return 1
-    prime_flag = 1
+        return True
     i = 2
     while (i <= sqrt(number)):
         if(number % i == 0):
-            prime_flag = 0
-            break
+            return False
         i = i + 1
-    if (prime_flag == 1):
-        return 1
+    return True
 
 b = [2, 3]
 
-for i in range (5, 1000, 2):
+for i in xrange (5, 1000, 2):
     if (check_prime(i)):
         b.append(i)
 print b
 
 a_b = []
-for i in range (-999, 1000, 1):
+for i in xrange (-999, 1000, 1):
     for j in b:
         if (((i + j + 1) > 0) and (check_prime(i + j + 1))):
             a_b.append([i,j])

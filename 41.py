@@ -1,20 +1,23 @@
+# -*- coding: utf-8 -*-
+
+# We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once. For example, 2143 is a 4-digit pandigital and is also prime.
+#
+# What is the largest n-digit pandigital prime that exists?
+
 import copy
 from math import *
 
 def check_prime(number):
     if (number == 1):
-        return 0
+        return False
     if (number == 2 or number == 3):
-        return 1
-    prime_flag = 1
+        return True
     i = 2
     while (i <= sqrt(number)):
         if(number % i == 0):
-            prime_flag = 0
-            break
+            return False
         i = i + 1
-    if (prime_flag == 1):
-        return 1
+    return True
 
 list = ["9", "8", "7", "6", "5", "4", "3", "2", "1"]
 pan_prime = []
@@ -92,4 +95,4 @@ while(len(pan_prime) == 0):
                 pan_prime.append(int(a))
     list.pop(0)
     print(list)
-print pan_prime[0]
+print (pan_prime[0])

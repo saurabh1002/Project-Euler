@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # You are given the following information, but you may prefer to do some research for yourself.
 #
 # 1 Jan 1900 was a Monday.
@@ -37,7 +39,7 @@ if day_1 == 'Sunday':
 else:
     count = 0
 
-for i in range (1901, 2001):
+for i in xrange (1901, 2001):
     print i
     if check_leap(i):
         for j in leap_year:

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #   Consider all integer combinations of ab for 2 ≤ a ≤ 5 and 2 ≤ b ≤ 5:
 #
 #               2^2=4, 2^3=8, 2^4=16, 2^5=32
@@ -13,8 +15,8 @@
 list = []
 final_list = []
 
-for i in range (2, 101):
-    for j in range (2, 101):
+for i in xrange (2, 101):
+    for j in xrange (2, 101):
         list.append(i ** j)
 
 for i in list:

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # 145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
 #
 # Find the sum of all numbers which are equal to the sum of the factorial of their digits.
@@ -8,13 +10,13 @@ import copy
 
 def factorial(num):
     fact = 1
-    for i in range (1, num + 1):
+    for i in xrange (1, num + 1):
         fact = fact * i
     return fact
 
 total = 0
 
-for i in range (11, 2540161):
+for i in xrange (11, 2540161):
     print i
     sum = 0
     j = copy.copy(i)

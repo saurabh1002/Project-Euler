@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
 
 a = 1   # First Term of Fibonacci Sequence

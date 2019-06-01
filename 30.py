@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:
 #
 # 1634 = 1^4 + 6^4 + 3^4 + 4^4
@@ -12,7 +14,7 @@
 import copy
 
 total = 0
-for i in range (100, 1000000):
+for i in xrange (100, 1000000):
     sum = 0
     j = copy.copy(i)
     while(j != 0):

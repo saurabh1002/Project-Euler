@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
 # If d(a) = b and d(b) = a, where a ≠ b, then a and b are an amicable pair and each of a and b are called amicable numbers.
 #
@@ -7,13 +9,13 @@
 
 def sum_of_divisors(num):
     sum = 0
-    for i in range (1, int(num / 2 + 1)):
+    for i in xrange (1, int(num / 2 + 1)):
         if (num % i == 0):
             sum = sum + i
     return sum
 
 s = 0
-for a in range (1, 10000):
+for a in xrange (1, 10000):
     b = sum_of_divisors(a)
     if (b != a):
         c = sum_of_divisors(b)

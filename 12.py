@@ -1,24 +1,21 @@
+# -*- coding: utf-8 -*-
+
 # What is the value of the first triangle number to have over five hundred divisors?
 from math import sqrt
 
 largest_count = 1
 
 def check_prime(number):
+    if (number == 1):
+        return False
     if (number == 2 or number == 3):
-        return 1
-
-    prime_flag = 1
-    i = 3
+        return True
+    i = 2
     while (i <= sqrt(number)):
-
         if(number % i == 0):
-            prime_flag = 0
-            break                             # Divide by the prime factor to reduce computation
-
-        i = i + 2
-
-    if (prime_flag == 1):
-        return 1
+            return False
+        i = i + 1
+    return True
 
 def find_divisor_num(num):
     count = 1
@@ -30,7 +27,7 @@ def find_divisor_num(num):
         count = count * (a + 1)
 
     while (num != 1):
-        for i in range (3, int(num) + 1, 2):
+        for i in xrange (3, int(num) + 1, 2):
             if (num == 1):
                 break
             if (check_prime(i)):

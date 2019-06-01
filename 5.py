@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20 ?
 from math import sqrt
 
@@ -8,17 +10,16 @@ def highest_power_less_than_number(prime, number):
     return a/prime
 
 def check_prime(number):
+    if (number == 1):
+        return False
     if (number == 2 or number == 3):
-        return 1
-    prime_flag = 1
+        return True
     i = 2
     while (i <= sqrt(number)):
         if(number % i == 0):
-            prime_flag = 0
-            break
+            return False
         i = i + 1
-    if (prime_flag == 1):
-        return 1
+    return True
 
 i = 2
 ans = 1

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
 #
 # a2 + b2 = c2
@@ -8,7 +10,7 @@
 
 from math import *
 
-for c in range (1, 500):
+for c in xrange (1, 500):
     a_plus_b = 1000.0 - c
     ab = ((a_plus_b ** 2.0) - (c ** 2.0)) * 0.5
     try:

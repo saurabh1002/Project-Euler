@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+
+# The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
+#
+# Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2.
+#
+# (Please note that the palindromic number, in either base, may not include leading zeros.)
+
 def check_palindrome(num):
     integer = str(num)
     l = 0
@@ -6,7 +14,7 @@ def check_palindrome(num):
         return False
     if n == 0:
         return True
-    while(n>=l):
+    while(n >= l):
         if(integer[l] != integer[n]):
             return False
         if l == n:
@@ -27,7 +35,7 @@ def dec_to_bin(num):
     return int(list)
 
 list = []
-for i in range (1, 1000000):
+for i in xrange (1, 1000000):
     if (check_palindrome(i)):
         list.append(i)
 # print list

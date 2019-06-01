@@ -1,24 +1,21 @@
+# -*- coding: utf-8 -*-
+
 # What is the 10 001st prime number?
 
-from math import sqrt
+from math import *
 
 def check_prime(number):
+    if (number == 1):
+        return False
     if (number == 2 or number == 3):
-        return 1
-
-    prime_flag = 1
-    i = 3
+        return True
+    i = 2
     while (i <= sqrt(number)):
-
         if(number % i == 0):
-            prime_flag = 0
-            break                             # Divide by the prime factor to reduce computation
-
-        i = i + 2
-
-    if (prime_flag == 1):
-        return 1
-
+            return False
+        i = i + 1
+    return True
+    
 count = 4
 num = 9
 no_of_prime = 10001

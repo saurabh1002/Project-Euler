@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
 
 num = [ 37107287533902102798797998220837590246510135740250,
@@ -102,7 +104,7 @@ num = [ 37107287533902102798797998220837590246510135740250,
 53503534226472524250874054075591789781264330331690]
 
 sum = 0
-for i in range (0, 100, 1):
+for i in xrange (0, 100, 1):
     sum = sum + num[i]
 
 print (sum)

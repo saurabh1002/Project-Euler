@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # n! means n × (n − 1) × ... × 3 × 2 × 1
 #
 # For example, 10! = 10 × 9 × ... × 3 × 2 × 1 = 3628800,
@@ -7,7 +9,7 @@
 
 def factorial(num):
     fact = 1
-    for i in range (1, num + 1):
+    for i in xrange (1, num + 1):
         fact = fact * i
     return fact
 
