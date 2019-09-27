@@ -70,4 +70,4 @@ for a in list:
                                         else:
                                             pan.append(int(f + g + h + i))
                                             sum = sum + int(f + g + h + i)
-print sum
+print (sum)
