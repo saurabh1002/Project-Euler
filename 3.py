@@ -2,10 +2,7 @@
 
 # What is the largest prime factor of the number 600851475143 ?
 
-import time
-def timing():
-    start_time = time.time()
-    return lambda x: print("[{:.9f}s] {}".format(time.time() - start_time, x))
+from common_functions import timing
 
 timer = timing()
 

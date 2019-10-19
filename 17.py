@@ -7,9 +7,13 @@
 #
 # NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. The use of "and" when writing out numbers is in compliance with British usage.
 
-units = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-tens = ["ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
-exception = ["eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+from common_functions import timing
+
+timer = timing()
+
+units = ("one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
+tens = ("ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")
+exception = ("eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
 
 sum_unit = 0
 sum_ten = 0
@@ -34,6 +38,6 @@ sum_and = len_and * 99 * 9
 sum_exception = sum_exception * 10
 sum_ten = (sum_ten * 10) + ((sum_ten - 3) * 90)
 
-total = sum_and + sum_ten + sum_unit_total + sum_hundred_total + sum_exception + sum_hundred + len_thousand
+total = sum_and + sum_ten + sum_unit_total + sum_hundred_total + sum_exception + sum_hundred + len_thousand + 3
 
-print total
+timer("{} letters will be used".format(total))

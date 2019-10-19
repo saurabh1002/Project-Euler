@@ -14,6 +14,8 @@
 #
 # NOTE: Once the chain starts the terms are allowed to go above one million.
 
+from common_functions import timing
+
 def collatz_seq(num):
     count = 1
     while(num != 1):
@@ -24,13 +26,14 @@ def collatz_seq(num):
         count = count + 1
     return count
 
+timer = timing()
 
 prev_count = 1
 num = 0
-for i in xrange (1, 1000000):
+for i in range (1, 1000000):
     count = collatz_seq(i)
     if (count >= prev_count):
         prev_count = count
         num = i
 
-print(num, prev_count)
+timer("{} produces the longest collatz sequence for numbers under 1 million".format(num))

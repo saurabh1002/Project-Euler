@@ -5,14 +5,12 @@
 #
 # How many such routes are there through a 20×20 grid?
 
-def factorial(num):
-    fact = 1
-    for i in xrange (1, num + 1):
-        fact = fact * i
-    return fact
+from common_functions import timing, factorial
+
+timer = timing()
 
 grid_size = 20
 
 ans = factorial(2 * grid_size)/(factorial(grid_size) ** 2)
 
-print ans
+timer("There are {} routes through the 20x20 grid".format(ans))

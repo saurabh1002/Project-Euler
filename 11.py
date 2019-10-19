@@ -2,9 +2,12 @@
 
 # What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
 
-product = 1
+import numpy as np
+from common_functions import timing
 
-grid = [[8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
+timer = timing()
+
+grid = np.array([[8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
 [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
 [81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65],
 [52, 70, 95, 23, 4, 60, 11, 42, 69, 24, 68, 56, 1, 32, 56, 71, 37, 2, 36, 91],
@@ -23,36 +26,39 @@ grid = [[8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8]
 [4, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 8, 46, 29, 32, 40, 62, 76, 36],
 [20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 4, 36, 16],
 [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
-[1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]]
+[1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]])
 
-for k in xrange (0, 20):
-    for i in xrange (0, 17):
+product = 1
+a = np.shape(grid)
+
+for k in range (0, a[0]):
+    for i in range (0, a[1]-3):
         product_4_r = 1
         product_4_c = 1
-        for j in xrange (i, i + 4):
-            product_4_r = product_4_r * grid[k][j]
-            product_4_c = product_4_c * grid[j][k]
+        for j in range (i, i + 4):
+            product_4_r = product_4_r * grid[k,j]
+            product_4_c = product_4_c * grid[j,k]
 
         if (product_4_r > product):
             product = product_4_r
         if (product_4_c > product):
             product = product_4_c
 
-for k in xrange (0, 17):
-    for i in xrange (0, 17):
+for k in range (0, a[0]-3):
+    for i in range (0, a[1]-3):
         product_4_dr = 1
-        for j in xrange (0, 4):
-            product_4_dr = product_4_dr * grid[k+j][i+j]
+        for j in range (0, 4):
+            product_4_dr = product_4_dr * grid[k+j,i+j]
 
         if (product_4_dr > product):
             product = product_4_dr
 
-for k in xrange (0, 17):
-    for i in xrange (3, 20):
+for k in range (0, a[0]-3):
+    for i in range (3, a[1]):
         product_4_dl = 1
-        for j in xrange (0, 4):
-            product_4_dl = product_4_dl * grid[k+j][i-j]
+        for j in range (0, 4):
+            product_4_dl = product_4_dl * grid[k+j,i-j]
 
         if (product_4_dl > product):
             product = product_4_dl
-print product
+timer("The greatest product of four adjacent numbers in the grid is {}".format(product))

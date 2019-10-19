@@ -2,10 +2,7 @@
 
 # Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
 
-import time
-def timing():
-    start_time = time.time()
-    return lambda x: print("[{:.9f}s] {}".format(time.time() - start_time, x))
+from common_functions import timing
 
 def difference(n):
     sum_of_square = ((n * (n + 1) * ((2 * n) + 1)) / 6)
@@ -15,4 +12,5 @@ def difference(n):
 timer = timing()
 
 ans = difference(100)
-timer("{}".format(ans))
+
+timer("The difference between the sum of the squares of the first one hundred natural numbers and the square of the sum is {}".format(ans))

@@ -7,17 +7,21 @@
 #
 # There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 # Find the product abc.
+from math import sqrt
+from common_functions import timing
 
-from math import *
+timer = timing()
 
-for c in xrange (1, 500):
+for c in range (1, 500):
     a_plus_b = 1000.0 - c
     ab = ((a_plus_b ** 2.0) - (c ** 2.0)) * 0.5
     try:
         a = (a_plus_b + sqrt((a_plus_b ** 2.0) - (4 * ab))) / 2
         if a == int(a):
             b = ab / a
-            print (a * b * c)
+            ans = a * b * c
 
     except ValueError:
         pass
+
+timer("The product of pythagorean triplet a,b,c for which a + b + c = 1000 is {}".format(ans))

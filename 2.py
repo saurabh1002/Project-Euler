@@ -2,10 +2,7 @@
 
 # By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
-import time
-def timing():
-    start_time = time.time()
-    return lambda x: print("[{:.9f}s] {}".format(time.time() - start_time, x))
+from common_functions import timing
 
 timer = timing()
 

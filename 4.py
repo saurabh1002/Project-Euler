@@ -1,29 +1,20 @@
 # -*- coding: utf-8 -*-
 
 # What is the largest Palindrome which is a product of two 3 digit numbers?
-def check_palindrome(num):
-    integer = str(num)
-    l = 0
-    n = len(integer)-1
-    if (integer[n] or integer[0]) == '0':
-        return False
-    while(n >= l):
-        if(integer[l] != integer[n]):
-            return False
-        if l == n:
-            return True
-        l = l + 1
-        n = n - 1
-    return True
+
+from common_functions import check_palindrome, timing
+
+timer = timing()
 
 largest_pal = 0
-for a in xrange (100, 1000, 1):
-    for b in xrange(100, 1000, 1):
+for a in range (999, 99, -1):
+    for b in range(999, 99, -1):
         if (a != b):
+            if (a*b < largest_pal):
+                break
             if(check_palindrome(a*b)):
                 if(largest_pal <= a*b):
                     largest_pal = a*b
-                    num1 = a
-                    num2 = b
+                break
 
-print(largest_pal, num1, num2)
+timer("The largest Palindrome which is a product of two 3 digit numbers is {}".format(largest_pal))
