@@ -9,43 +9,30 @@
 # Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 
 from math import *
-
-def sum_of_divisors(num):
-    sum = 0
-    i = 2
-    while i <= sqrt(num):
-        if (num % i == 0):
-            if (i == (num / i)):
-                sum = sum + i
-            else:
-                sum = sum + i + (num / i)
-        i = i + 1
-
-    return sum + 1
+from common_functions import timing, sum_of_proper_divisors
+import numpy as np
 
 def check_abundant(num):
-    if (sum_of_divisors(num) > num):
+    if (sum_of_proper_divisors(num) > num):
         return True
     else:
         return False
 
-abundant_nos = []
-for i in xrange (12, 28124):
+temp = []
+for i in range (12, 28124):
     if (check_abundant(i)):
-        abundant_nos.append(i)
+        temp.append(i)
+abundant_nos = np.array(temp)
 
 list = []
-for i in xrange (1, 28124):
+for i in range (1, 28124):
     if (i % 2) == 0:
         if check_abundant(i / 2):
             continue
     list.append(i)
 
-print list
 sum = 0
-
 for i in list[:]:
-    print (len(list), 'len')
     flag = 0
     for j in abundant_nos:
         if (i - j) > 11 :
@@ -54,22 +41,19 @@ for i in list[:]:
                 k = i
                 while (k < 28124):
                     try:
-                        # print (k, n, "k")
                         list.remove(k)
                         n = n + 1
                         k = i * n
                     except ValueError:
                         n = n + 1
                         k = i * n
-                        # print("exception")
                         pass
                 flag = 1
                 break
         else:
             break
     if flag == 0:
-        # print i
         sum = sum + i
         list.remove(i)
 
-print sum
+print(sum)

@@ -6,6 +6,7 @@
 #
 # 1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
 # How many different ways can £2 be made using any number of coins?
+from common_functions import timing
 
 def total(a, b, c, d, e, f, g, h):
     val = 200 * a + 100 * b + 50 * c + 20 * d + 10 * e + 5 * f + 2 * g + h
@@ -14,28 +15,28 @@ def total(a, b, c, d, e, f, g, h):
     else:
         return False
 
+timer = timing()
 count = 0
-for h in xrange (0, 201):
-    for g in xrange (0, 101):
-        if (h + 2 * g) > 200:
-            continue
-        for f in xrange (0, 41):
-            if (h + 2 * g + 5 * f) > 200:
-                continue
-            for e in xrange (0, 21):
-                if (h + 2 * g + 5 * f + 10 * e) > 200:
-                    continue
-                for d in xrange (0, 11):
-                    if (h + 2 * g + 5 * f + 10 * e + 20 * d) > 200:
-                        continue
-                    for c in xrange (0, 5):
-                        if (h + 2 * g + 5 * f + 10 * e + 20 * d + 50 * c) > 200:
-                            continue
-                        for b in xrange (0, 3):
-                            if (h + 2 * g + 5 * f + 10 * e + 20 * d + 50 * c + 100 * b) > 200:
-                                continue
-                            for a in xrange (0, 2):
-                                if total(a, b, c, d, e, f, g, h) == True:
-                                    print (a, b, c, d, e, f, g, h)
+for a in range (0, 2):
+    for b in range (0, 3):
+        if (200 * a + 100 * b) > 200:
+            break
+        for c in range (0, 5):
+            if (200 * a + 100 * b + 50 * c) > 200:
+                break
+            for d in range (0, 11):
+                if (200 * a + 100 * b + 50 * c + 20 * d) > 200:
+                    break
+                for e in range (0, 21):
+                    if (200 * a + 100 * b + 50 * c + 20 * d + 10 * e) > 200:
+                        break
+                    for f in range (0, 41):
+                        if (200 * a + 100 * b + 50 * c + 20 * d + 10 * e + 5 * f) > 200:
+                            break
+                        for g in range (0, 101):
+                            if (200 * a + 100 * b + 50 * c + 20 * d + 10 * e + 5 * f + 2 * g) > 200:
+                                break
+                            for h in range (0, 201):
+                                if total(a, b, c, d, e, f, g, h):
                                     count = count + 1
-print count
+timer("$2 can be made in {} ways using any number of coins".format(count))

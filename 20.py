@@ -7,16 +7,33 @@
 #
 # Find the sum of the digits in the number 100!
 
-def factorial(num):
-    fact = 1
-    for i in xrange (1, num + 1):
-        fact = fact * i
-    return fact
+from common_functions import timing
+import numpy as np
 
-num = factorial(100)
-print num
-sum = 0
-while num !=0:
-    sum = sum + (num % 10)
-    num = (num - (num % 10))/10
-print sum
+def multiply(v, x):
+    carry = 0
+    size = len(v)
+    for i in range(size):
+        # Calculate res + prev carry
+        res = carry + v[i] * x
+        # updation at ith position
+        v[i] = res % 10
+        carry = res // 10
+    while (carry != 0):
+        v.append(carry % 10)
+        carry //= 10
+
+# Returns sum of digits in n!
+def findSumOfDigits(n):
+    v = [1]
+    for i in range(1, n + 1):
+        multiply(v, i)
+
+    # Find sum of digits in vector v[]
+    num = np.array(v)
+    return np.sum(num)
+
+
+timer = timing()
+n = 100
+timer("Sum of the digits in the number 100! is {}".format(findSumOfDigits(n)))

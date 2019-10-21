@@ -11,18 +11,23 @@
 #   It can be verified that the sum of the numbers on the diagonals is 101.
 #   What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?
 
+from common_functions import timing
+
+timer = timing()
+
 size_of_spiral = 1001
 
 diag_ur = 0
-for i in xrange (1, size_of_spiral + 1, 2):
+for i in range (1, size_of_spiral + 1, 2):
     diag_ur = diag_ur + (i ** 2)
 
 diag_ll = 0
-for i in xrange (2, size_of_spiral, 2):
+for i in range (2, size_of_spiral, 2):
     diag_ll = diag_ll + (i ** 2) + 1
 
 diag_ul = diag_ll + (((size_of_spiral - 1) / 2) * (((size_of_spiral - 1) / 2) + 1))
 diag_lr = diag_ur - 1 - (3 * (((size_of_spiral - 1) / 2) * (((size_of_spiral - 1) / 2) + 1)))
 
 sum = diag_ul + diag_ur + diag_lr + diag_ll
-print sum
+
+timer("The sum of the numbers on the diagonals is {}".format(sum))

@@ -82,3 +82,16 @@ def factorial(num):
     if num == 1:
         return 1
     return num * factorial(num - 1)
+
+
+def sum_of_proper_divisors(num):
+    sum = 1
+    i = 2
+    while i <= sqrt(num):
+        if (num % i == 0):
+            if (i == (num / i)):
+                sum = sum + i
+            else:
+                sum = sum + i + (num / i)
+        i = i + 1
+    return sum

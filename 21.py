@@ -7,20 +7,17 @@
 #
 # Evaluate the sum of all the amicable numbers under 10000.
 
-def sum_of_divisors(num):
-    sum = 0
-    for i in xrange (1, int(num / 2 + 1)):
-        if (num % i == 0):
-            sum = sum + i
-    return sum
+from common_functions import timing, sum_of_proper_divisors
+from math import sqrt
 
-s = 0
-for a in xrange (1, 10000):
-    b = sum_of_divisors(a)
+timer = timing()
+
+sum = 0
+for a in range (1, 10000):
+    b = sum_of_proper_divisors(a)
     if (b != a):
-        c = sum_of_divisors(b)
+        c = sum_of_proper_divisors(b)
         if (c == a):
-            print(a,b,c)
-            s = s + a
+            sum = sum + a
 
-print s
+timer("Sum of all amicable numbers under 10000 is {}".format(sum))

@@ -12,9 +12,12 @@
 # Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
 
 import copy
+from common_functions import timing
+
+timer = timing()
 
 total = 0
-for i in xrange (100, 1000000):
+for i in range (100, 1000000):
     sum = 0
     j = copy.copy(i)
     while(j != 0):
@@ -22,5 +25,4 @@ for i in xrange (100, 1000000):
         j = (j - (j % 10)) / 10
     if (sum == i):
         total = total + i
-        print i
-print total
+timer("Sum of all numbers that can be written as sum of fifth powers of their digits is {}".format(total))
