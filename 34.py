@@ -7,23 +7,19 @@
 # Note: as 1! = 1 and 2! = 2 are not sums they are not included.
 
 import copy
+from common_functions import timing, factorial
 
-def factorial(num):
-    fact = 1
-    for i in xrange (1, num + 1):
-        fact = fact * i
-    return fact
+timer = timing()
 
 total = 0
-
-for i in xrange (11, 2540161):
-    print i
+for i in range (11, 2540161):   # 9! * 7 = 2540160 is a seven digit number i.e. largest 7 digit number 9999999 has sum of factorial of its digits as 2540160 which is a seven digit number
     sum = 0
     j = copy.copy(i)
     while (j != 0):
-        sum = sum + (factorial(j % 10))
+        f = factorial(j % 10)
+        sum = sum + f
         j = ((j - (j % 10)) / 10)
     if (sum == i):
         total = total + i
 
-print total
+timer("sum of all numbers which are equal to the sum of the factorial of their digit is {}".format(total))

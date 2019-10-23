@@ -79,6 +79,8 @@ def number_of_divisors(num):
     return count
 
 def factorial(num):
+    if num == 0:
+        return 1
     if num == 1:
         return 1
     return num * factorial(num - 1)
@@ -95,3 +97,15 @@ def sum_of_proper_divisors(num):
                 sum = sum + i + (num / i)
         i = i + 1
     return sum
+
+
+def dec_to_bin(num):
+    list = ''
+    while(num != 0):
+        if (num % 2) == 0:
+            list = '0' + list
+            num = num / 2
+        if (num % 2) == 1:
+            list = '1' + list
+            num = (num - 1) / 2
+    return int(list)

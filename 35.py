@@ -6,22 +6,11 @@
 # How many circular primes are there below one million?
 
 from math import *
+from common_functions import timing, check_prime
 
-def check_prime(number):
-    if (number == 1):
-        return False
-    if (number == 2 or number == 3):
-        return True
-    i = 2
-    while (i <= sqrt(number)):
-        if(number % i == 0):
-            return False
-        i = i + 1
-    return True
-
-def check_even_number(num):
+def check_any_even_number(num):
     while (num != 0):
-        if (((num % 10) % 2) == 0):
+        if ((num % 2) == 0):
             return False
         else:
             num = (num - (num % 10)) / 10
@@ -30,15 +19,17 @@ def check_even_number(num):
 def rotate_num(num):
     last_digit = num % 10
     num = (num - (last_digit)) / 10
-    return (int(str(last_digit) + str(num)))
+    return (int(float(str(last_digit) + str(num))))
+
+timer = timing()
 
 count = 13
-for i in xrange(101, 1000000, 2):
-    if check_even_number(i):
+for i in range(101, 1000000, 2):
+    if check_any_even_number(i):
         if (check_prime(i)):
             flag = 1
             l = len(str(i))
-            for j in xrange (0, l):
+            for j in range (0, l):
                 i = rotate_num(i)
                 if (check_prime(i)):
                     continue
@@ -48,4 +39,4 @@ for i in xrange(101, 1000000, 2):
             if flag == 1:
                 count = count + 1
 
-print count
+timer("There are {} circular primes below one million".format(count))

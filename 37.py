@@ -6,18 +6,7 @@
 # NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 
 from math import *
-
-def check_prime(number):
-    if (number == 1):
-        return False
-    if (number == 2 or number == 3):
-        return True
-    i = 2
-    while (i <= sqrt(number)):
-        if(number % i == 0):
-            return False
-        i = i + 1
-    return True
+from common_functions import check_prime, timing
 
 def right_trunc(num):
     while num != 0:
@@ -38,6 +27,8 @@ def left_trunc(num):
             return False
     return True
 
+timer = timing()
+
 num = 11
 count = 0
 sum = 0
@@ -46,6 +37,6 @@ while (count != 11):
         if left_trunc(num):
             count = count + 1
             sum = sum + num
-
     num = num + 2
-print sum
+
+timer("The sum of the only eleven primes that are both truncatable from left to right and right to left is {}".format(sum))

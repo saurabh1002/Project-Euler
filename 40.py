@@ -10,6 +10,10 @@
 #
 # d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
 
+from common_functions import timing
+
+timer = timing()
+
 num = ''
 i = 1
 while (len(num) < 1000001):
@@ -17,7 +21,7 @@ while (len(num) < 1000001):
     i = i + 1
 
 prod = 1
-for i in xrange (0, 7):
+for i in range (0, 7):
     prod = prod * int(num[(10**i) - 1])
 
-print prod
+timer("d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000 = {}".format(prod))

@@ -8,6 +8,8 @@
 #
 # If the product of these four fractions is given in its lowest common terms, find the value of the denominator.
 
+from common_functions import timing
+
 def remove_common(a, b):
     i = a % 10.0
     j = (a - (a % 10.0)) / 10.0
@@ -29,22 +31,24 @@ def remove_common(a, b):
             return -1
     except ZeroDivisionError:
         return -1
+
+
+timer = timing()
+
 num = 1.0
 den = 1.0
-for i in xrange (10, 100):
-    for j in xrange (10, 100):
+for i in range (10, 100):
+    for j in range (10, 100):
         if i < j:
             num_1 = float(i) / float(j)
             num_2 = remove_common(float(i), float(j))
             if (num_1 == num_2):
-                print (i, j, num_1, num_2)
                 num = num * i
                 den = den * j
-
-print num, den
 
 for i in range (2, int(num / 2)):
     while(num % i == 0 and den % i == 0):
         num = num / i
         den = den / i
-print num, den
+
+timer("The value of the denominator is {}".format(den))
