@@ -10,6 +10,9 @@
 
 
 from math import *
+from common_functions import timing
+
+timer = timing()
 
 f = open("words.txt", "r").read()
 
@@ -29,9 +32,10 @@ dict = {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8, "I": 9, 
 count = 0
 for i in list:
     temp = 0
-    for j in xrange(0, len(i)):
+    for j in range(0, len(i)):
         temp = temp + dict.get(i[j])
 
     if (-1 + sqrt(1 + (8 * temp))) / 2 == int((-1 + sqrt(1 + (8 * temp))) / 2):
         count = count + 1
-print count
+
+timer("There are {} triangle words".format(count))

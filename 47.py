@@ -15,18 +15,7 @@
 
 from math import *
 import copy
-
-def check_prime(number):
-    if (number == 1):
-        return False
-    if (number == 2 or number == 3):
-        return True
-    i = 2
-    while (i <= sqrt(number)):
-        if(number % i == 0):
-            return False
-        i = i + 1
-    return True
+from common_functions import check_prime, timing
 
 def distinct_factors(num):
     if check_prime(num):
@@ -48,9 +37,9 @@ def distinct_factors(num):
                     number = number / i
         i = i + 2
 
-    if count == 4:
-        print count, num
     return count
+
+timer = timing()
 
 i = 1000
 while 1:
@@ -62,7 +51,6 @@ while 1:
             if c == 4:
                 d = distinct_factors(i)
                 if d == 4:
-                    print i
                     break
                 else:
                     i = i + 1
@@ -72,3 +60,5 @@ while 1:
             i = i + 3
     else:
         i = i + 4
+
+timer("The smallest number of the first four consecutive integers to have four distinct prime factors each is {}".format(i))

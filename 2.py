@@ -13,9 +13,8 @@ sum = 2 # Sum of even terms
 
 while (c < 4000000):
     if (c % 2 == 0):    # Check for even number
-        sum = sum + c
-    a = b
-    b = c
+        sum += c
+    a,b = b,c
     c = a + b
 
 timer("The sum of even-valued terms of a Fibonacci Sequence below four million is = {}".format(sum))

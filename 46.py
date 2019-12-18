@@ -14,31 +14,22 @@
 # What is the smallest odd composite that cannot be written as the sum of a prime and twice a square?
 
 from math import *
+from common_functions import check_prime, timing
 
-ddef check_prime(number):
-    if (number == 1):
-        return False
-    if (number == 2 or number == 3):
-        return True
-    i = 2
-    while (i <= sqrt(number)):
-        if(number % i == 0):
-            return False
-        i = i + 1
-    return True
+timer = timing()
 
 flag = True
 odd_comp = 35
-while (flag != False):
-    if ((check_prime(odd_comp)) == False):
+while (flag):
+    if (not(check_prime(odd_comp))):
         GoldBach = False
-        for i in xrange (3, odd_comp, 2):
+        for i in range (3, odd_comp, 2):
             if (check_prime(i)):
                 if (sqrt((odd_comp - i) / 2) == int(sqrt((odd_comp - i) / 2))):
-                    print odd_comp, i
                     GoldBach = True
-        if (GoldBach != True):
+        if (not GoldBach):
             flag = False
-            print odd_comp
+
     odd_comp = odd_comp + 2
-    print odd_comp
+
+timer("The smallest odd number that does not satisfy Goldbach's conjecture is {}".format(odd_comp - 2))

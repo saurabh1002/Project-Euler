@@ -6,24 +6,14 @@
 
 import copy
 from math import *
+from common_functions import check_prime, timing
 
-def check_prime(number):
-    if (number == 1):
-        return False
-    if (number == 2 or number == 3):
-        return True
-    i = 2
-    while (i <= sqrt(number)):
-        if(number % i == 0):
-            return False
-        i = i + 1
-    return True
+timer = timing()
 
 list = ["9", "8", "7", "6", "5", "4", "3", "2", "1"]
 pan_prime = []
 while(len(pan_prime) == 0):
     for a in list:
-        print (a,list)
         list_a = copy.copy(list)
         list_a.remove(a)
         if(len(list_a) != 0):
@@ -57,42 +47,33 @@ while(len(pan_prime) == 0):
                                                                 if(len(list_h) != 0):
                                                                     for i in list_h:
                                                                         if (check_prime(int(a + b + c + d + e + f + g + h + i))):
-                                                                            print('9', list)
                                                                             pan_prime.append(int(a + b + c + d + e + f + g + h + i))
                                                                 else:
                                                                     if (check_prime(int(a + b + c + d + e + f + g + h))):
-                                                                        print('8', list)
                                                                         pan_prime.append(int(a + b + c + d + e + f + g + h))
                                                         else:
                                                             print (int(a + b + c + d + e + f + g))
                                                             temp = check_prime(int(a + b + c + d + e + f + g))
                                                             if (temp == 1):
-                                                                print('7', list)
                                                                 pan_prime.append(int(a + b + c + d + e + f + g))
                                                 else:
                                                     if (check_prime(int(a + b + c + d + e + f))):
-                                                        print('6')
                                                         pan_prime.append(int(a + b + c + d + e + f))
                                         else:
                                             if (check_prime(int(a + b + c + d + e))):
-                                                print('5')
                                                 pan_prime.append(int(a + b + c + d + e))
                                 else:
                                     if (check_prime(int(a + b + c + d))):
-                                        print('4')
                                         pan_prime.append(int(a + b + c + d))
                         else:
                             if (check_prime(int(a + b + c))):
-                                print('3')
                                 pan_prime.append(int(a + b + c))
                 else:
                     if (check_prime(int(a + b))):
-                        print ('2')
                         pan_prime.append(int(a + b))
         else:
             if (check_prime(int(a))):
-                print ('1')
                 pan_prime.append(int(a))
     list.pop(0)
-    print(list)
-print (pan_prime[0])
+
+timer("The largest n digit pandigital prime is {}".format(pan_prime[0]))

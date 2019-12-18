@@ -79,9 +79,9 @@ def number_of_divisors(num):
     return count
 
 def factorial(num):
-    if num == 0:
-        return 1
-    if num == 1:
+    if num < 0:
+        raise ValueError("Input cannot be a negative number")
+    elif num == 1 or num == 0:
         return 1
     return num * factorial(num - 1)
 

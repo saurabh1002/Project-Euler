@@ -8,7 +8,6 @@ timer = timing()
 
 number = 600851475143
 i = 3
-global largest
 largest = 1
 while (i <= number):
     u =  i % 10

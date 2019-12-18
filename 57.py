@@ -4,40 +4,31 @@
 # The next three expansions are 99/70, 239/169, and 577/408, but the eighth expansion, 1393/985, is the first example where the number of digits in the numerator exceeds the number of digits in the denominator.
 
 # In the first one-thousand expansions, how many fractions contain a numerator with more digits than the denominator?
+import time
 
-def no_of_digits(num):
-    count = 0
-    while (num != 0):
-        num = (num - (num % 10)) / 10
-        count = count + 1
-    return count
+calc_frac = lambda a,b,c:(a*c)+b
 
-def is_num_greater(num, den):
-    if no_of_digits(num) > no_of_digits(den):
-        return True
-    else:
-        return False
+def cont_frac(i, num, den):
+    global num_p, den_p
 
-def calc_frac(a, b, c):
-    return ((a * c) + b), c
+    den_p, num_p = calc_frac(2, num, den), den
+    num_r, den_r = calc_frac(1, num_p, den_p), den_p
 
-def cont_frac(i):
-    num = 1
-    den = 2
-    while (i != 1):
-        den, num = calc_frac(2, num, den)
-        i = i - 1
-    num, den = calc_frac(1, num, den)
-    return num, den
+    return num_r, den_r
+
+start_time = time.time()
+
+num_p = 1
+den_p = 2
 
 count = 0
-for i in xrange(1, 1001):
-    num, den = cont_frac(i)
-    if is_num_greater(num, den):
-        count = count + 1
+for i in range(2, 1001):
+    num, den = cont_frac(i, num_p, den_p)
+    if len(str(num)) > len(str(den)):
+        count += 1
 
+print(time.time() - start_time)
 print count
-
 
 
 

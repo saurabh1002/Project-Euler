@@ -17,6 +17,8 @@
 
 # How many Lychrel numbers are there below ten-thousand?
 
+import time
+
 def check_palindrome(num):
     integer = str(num)
     l = 0
@@ -28,30 +30,35 @@ def check_palindrome(num):
             return False
         if l == n:
             return True
-        l = l + 1
-        n = n - 1
+        l += 1
+        n -= 1
     return True
 
 def reverse_number(num):
     rev = 0
     while(num != 0):
-        rev = rev + num % 10
-        rev = rev * 10
+        rev += num % 10
+        rev *= 10
         num = (num - (num % 10)) / 10
     return rev/10
 
 def check_lychrel(num):
     count = 0
     while (count < 50):
-        num = num + reverse_number(num)
+        num += reverse_number(num)
         if (check_palindrome(num) == False):
-            count = count + 1
+            count += 1
         else:
             return False
     return True
 
+
+start_time = time.time()
+
 count = 0
 for i in xrange(1, 10000):
     if check_lychrel(i):
-        count = count + 1
+        count += 1
+
+print(time.time() - start_time)
 print count

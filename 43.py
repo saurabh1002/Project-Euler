@@ -15,47 +15,40 @@
 # Find the sum of all 0 to 9 pandigital numbers with this property.
 
 import copy
+from common_functions import timing
+
+timer = timing()
 
 list = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 pan_num = []
 for a in list[1:10]:
     list_a = copy.copy(list)
     list_a.remove(a)
-    # print a
     for b in list_a:
         list_b = copy.copy(list_a)
         list_b.remove(b)
-        # print b
         for c in list_b:
             list_c = copy.copy(list_b)
             list_c.remove(c)
-            # print c
             for d in list_c:
                 list_d = copy.copy(list_c)
                 list_d.remove(d)
-                # print d
                 for e in list_d:
                     list_e = copy.copy(list_d)
                     list_e.remove(e)
-                    # print e
                     for f in list_e:
                         list_f = copy.copy(list_e)
                         list_f.remove(f)
-                        # print f
                         for g in list_f:
                             list_g = copy.copy(list_f)
                             list_g.remove(g)
-                            # print g
                             for h in list_g:
                                 list_h = copy.copy(list_g)
                                 list_h.remove(h)
-                                # print h
                                 for i in list_h:
                                     list_i = copy.copy(list_h)
                                     list_i.remove(i)
-                                    # print i
                                     for j in list_i:
-                                        # print j
                                         if ((int(h + i + j)% 17) == 0):
                                             if ((int(g + h + i)% 13) == 0):
                                                 if ((int(f + g + h)% 11) == 0):
@@ -68,4 +61,4 @@ sum = 0
 for i in pan_num:
     sum = sum + i
 
-print sum
+timer("Sum of all 0 to 9 pandigital numbers with the given property is {}".format(sum))

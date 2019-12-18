@@ -5,21 +5,24 @@
 
 # Considering natural numbers of the form, a^b, where a, b < 100, what is the maximum digital sum?
 
+import time
+
 def digital_sum(num):
     sum_ = 0
-    while (num != 0):
-        sum_ = sum_ + (num % 10)
-        num = (num - (num % 10)) / 10
+    for i in str(num):
+        sum_ += int(i)
     return sum_
 
+start_time = time.time()
+
 larger_sum = 0
-for i in xrange(2, 100):
+for i in range(2, 100):
     if i % 10 == 0:
         continue
-    for j in xrange(2, 100):
+    for j in range(2, 100):
         num = i ** j
         total = digital_sum(num)
         if total > larger_sum:
             larger_sum = total
-
+print (time.time() - start_time)
 print larger_sum

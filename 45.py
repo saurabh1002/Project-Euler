@@ -10,15 +10,18 @@
 # Find the next triangle number that is also pentagonal and hexagonal.
 
 from math import *
+from common_functions import timing
+
+timer = timing()
 
 flag = True
 i = 286
 while (flag):
-    print i
     t = 0.5 * i * (i + 1)
     p = (1 + sqrt(1 + (24 * t))) % 6
     h = (1 + sqrt(1 + (8 * t))) % 4
     if (p == 0) and (h == 0):
         flag = False
-        print i, t
     i = i + 1
+
+timer("The next triangle number that is also pentagonal and hexagonal is {}".format(t))
